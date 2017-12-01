@@ -1,0 +1,32 @@
+{
+  "name": "plantapi",
+  "version": "0.0.1",
+  "description": "Plant API for the Angular plan Dashboard",
+  "main": "server.js",
+  "scripts": {
+    "start": "set NODE_ENV=dev && node server.js",
+    "test": "mocha --timeout 10000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jled7/plantAPI.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jled7/plantAPI/issues"
+  },
+  "homepage": "https://github.com/jled7/plantAPI#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "config": "^1.28.1",
+    "express": "^4.16.2",
+    "mongoose": "^4.13.5",
+    "morgan": "^1.9.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
+    "mocha": "^4.0.1"
+  }
+}
