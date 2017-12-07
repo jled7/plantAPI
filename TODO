@@ -1,0 +1,3 @@
+- Configuration POST (Name, Password, Location)
+- Plant POST (add Plant, edit Plant, remove Plant, get last Opened Servo, get Humidity Sensor Array)
+- Get Sensor value (Humidity)
