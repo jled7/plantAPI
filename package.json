@@ -4,8 +4,8 @@
   "description": "Plant API for the Angular plan Dashboard",
   "main": "server.js",
   "scripts": {
-    "start": "set NODE_ENV=dev && node server.js",
-    "test": "mocha --timeout 10000"
+    "start": "export NODE_ENV=dev && node server.js",
+    "test": "export NODE_ENV=test && mocha --timeout 10000"
   },
   "repository": {
     "type": "git",

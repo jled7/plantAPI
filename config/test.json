@@ -1,7 +1,6 @@
 {
     "DB_HOST": "mongodb://localhost",
-    "DB_CONFIG": "Configuration",
-    "DB_PLANT": "Plant",
+    "DB_PLANT": "PlantTest",
     "API_PORT": 8000,
     "VERSION": "0.0.1"
 }
