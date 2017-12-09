@@ -1,7 +1,7 @@
 {
   "name": "plantapi",
   "version": "0.0.1",
-  "description": "Plant API for the Angular plan Dashboard",
+  "description": "Plant API for the Angular plant Dashboard",
   "main": "server.js",
   "scripts": {
     "start": "export NODE_ENV=dev && node server.js",
