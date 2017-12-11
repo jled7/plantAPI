@@ -7,6 +7,7 @@ const mongoose = require('mongoose')
 const config = require ('config')
 
 const apiConfiguration = require('./routes/configuration')
+process.env.NODE_ENV = 'test'
 
 const app = express()
 //const DB_HOST = config.DB_HOST;

@@ -17,10 +17,42 @@ router.get('/connection', async (req, res) => {
         answer = false
     }
     
-    status = answer?"200":"204"
+    status = answer?200:204
     res.json({
         'status': status,
         'message': 'PlantAPI v' + config.VERSION, 
+    })
+})
+
+// Mongoose error status: 500
+// Multiple configuration error status: 501
+router.post('/configurate', (req, res) => {
+    configuration.isInitialized().then((ret) => {
+        if(!ret) {
+            configuration.createConfiguration(req, res)
+        } else {
+            res.json({
+                status: 501,
+                error: "Solo puede haber una configuración"
+            })
+        }       
+    }).catch((err) => {
+        console.log("UNKNOWN ERROR: " + err)
+    })
+})
+
+router.post('/login', (req, res) => {
+    configuration.isInitialized().then((ret) => {
+        if(ret) {
+            configuration.login(req, res)
+        } else {
+            res.json({
+                status: 500,
+                message: "Sin inicializar"
+            })
+        }
+    }).catch((err) => {
+        console.log("UNKNOWN ERROR: " + err)
     })
 })
 

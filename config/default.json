@@ -2,5 +2,6 @@
     "DB_HOST": "mongodb://localhost",
     "DB_PLANT": "Plant",
     "API_PORT": 8000,
-    "VERSION": "0.0.1"
+    "VERSION": "0.0.1",
+    "TOKEN": "mysecret"
 }
