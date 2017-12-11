@@ -1,4 +1,3 @@
-const mongoose = require('mongoose')
 const configuration = require('../models/configuration')
 const TOKEN = require('config').TOKEN
 const jwt = require('jsonwebtoken')
@@ -49,6 +48,11 @@ function login(req, res) {
             return res.json({
                 status: 500,
                 error: err
+            })
+        if(req.body.password === undefined)
+            return res.json({
+                status: 500,
+                error: "Password undefined"
             })
         if(!config.checkPassword(req.body.password)) {
             return res.json({

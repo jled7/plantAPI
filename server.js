@@ -5,8 +5,11 @@ const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const mongoose = require('mongoose')
 const config = require ('config')
+const jwt = require('jsonwebtoken')
 
 const apiConfiguration = require('./routes/configuration')
+const apiPlants = require('./routes/plants')
+
 process.env.NODE_ENV = 'test'
 
 const app = express()
@@ -16,7 +19,10 @@ let mongoDB = config.DB_HOST+'/'+config.DB_PLANT
 mongoose.Promise = global.Promise
 mongoose.connect(mongoDB, {
     useMongoClient: true
-});
+}).catch((err) => {
+    console.log("Mongo Error: " +err)
+    process.exit
+})
 const db = mongoose.connection
 if(process.env.NODE_ENV !== 'test') {
     db.on('connected', () => {
@@ -39,6 +45,27 @@ app.get("/", (req, res) => {
 })
 
 app.use("/api", apiConfiguration)
+
+
+// Authentication middleware
+app.use("/api", (req, res, next) => {
+    if(req.query.token === undefined) {
+        return res.status(401).json({
+            status: 401,
+            error: "Unauthorized"
+        })
+    }
+    jwt.verify(req.query.token, config.TOKEN, function(err, token) {
+        if(err) 
+            return res.status(401).json({
+                status: 401,
+                error: "Wrong token"
+            })
+        next()
+    })
+})
+
+app.use("/api", apiPlants)
 
 if(process.env.NODE_ENV === 'test') {
     app.EXPRESS_APP = true

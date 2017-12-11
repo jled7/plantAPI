@@ -99,6 +99,19 @@ describe("Testing Básico de Configuración", function() {
             })
     })
 
+    it('Debería devolver error al Autentificarse sin una password', (done) => {
+        chai.request(app)
+            .post('/api/login')
+            .end((err, res) => {
+                expect(err).to.be.null
+                res.should.not.be.null
+                res.body.should.be.a('Object')
+                res.body.status.should.be.eql(500)
+                res.body.error.should.be.equal("Password undefined")
+                done()
+            })
+    })
+
     it('Debería poder Autentificarse en el sistema {pass:test1234}', (done) => {
         chai.request(app)
             .post('/api/login')
