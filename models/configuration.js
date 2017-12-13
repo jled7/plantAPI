@@ -7,7 +7,8 @@ let configurationSchema = new Schema({
     name: {type:String, required: true, unique: true, minlength:3, maxlength:20},
     initialized: {type: Boolean, required: true},
     password: {type:String, required: true},
-    location: {type:String, required: true}
+    location: {type:String, required: true},
+    updateTime: {type:Number, required: true, default: 30}
 })
 
 /*configurationSchema.path('password').validate((password) => {
