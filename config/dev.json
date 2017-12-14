@@ -3,5 +3,6 @@
     "DB_PLANT": "PlantTest",
     "API_PORT": 8000,
     "VERSION": "0.3.0",
-    "TOKEN": "mysecret"
+    "TOKEN": "mysecret",
+    "ACCESS_CONTROL_ALLOW_ORIGIN": "*"
 }

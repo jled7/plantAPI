@@ -10,10 +10,18 @@ const jwt = require('jsonwebtoken')
 const apiConfiguration = require('./routes/configuration')
 const apiPlants = require('./routes/plants')
 
-process.env.NODE_ENV = 'test'
+process.env.NODE_ENV = 'dev'
 
 const app = express()
-//const DB_HOST = config.DB_HOST;
+
+// Access-Control-Allow-Origin
+app.use((req,res,next) => {
+    res.setHeader('Access-Control-Allow-Origin', config.ACCESS_CONTROL_ALLOW_ORIGIN)
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PATCH, DELETE, OPTIONS');
+    next();
+})
+
 
 let mongoDB = config.DB_HOST+'/'+config.DB_PLANT
 mongoose.Promise = global.Promise
